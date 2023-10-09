@@ -20,17 +20,99 @@ func main() {
 
 	con := controller.NewController(&cfg, jsondb)
 
-	resp, err := con.CreateClinic(
-		&models.CreateClinic{
-			Name: "Akfa clinic",
-			Logo: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Fclinic-care-logo-icon-design-vector-22560856&psig=AOvVaw0rmUsoAItEKyY5eJKams9h&ust=1696684557507000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIiQ1NTA4YEDFQAAAAAdAAAAABAE",
-			City: "Tashkent",
-		},
-	)
+	// Clinic(con)
+	Branch(con)
+}
+
+func Branch(con *controller.Conn) {
+
+	resp, err := con.CreateBranch(&models.CreateBranch{
+		ClinicID: "90384823904",
+		Address:  "Tashkent",
+		Phone:    "883-349-435-45",
+	})
+
 	if err != nil {
-		log.Println("Create clinic:", err.Error())
+		log.Println("Create branch:", err.Error())
 		return
 	}
 
 	fmt.Println(resp)
+}
+
+func Clinic(con *controller.Conn) {
+
+	// Create
+	// {
+	// 	for i := 0; i < 100; i++ {
+	// 		resp, err := con.CreateClinic(
+	// 			&models.CreateClinic{
+	// 				Name: faker.FirstName(),
+	// 				Logo: faker.LastName(),
+	// 				City: faker.DomainName(),
+	// 			},
+	// 		)
+	// 		if err != nil {
+	// 			log.Println("Create clinic:", err.Error())
+	// 			return
+	// 		}
+
+	// 		fmt.Println(resp)
+	// 	}
+	// }
+
+	// GetByID
+	// {
+	// 	resp, err := con.GetByIDClinic(&models.ClinicPrimaryKey{ID: "bd82bb75-ce28-479d-88a8-491c50f5df5e"})
+	// 	if err != nil {
+	// 		log.Println(config.Error, "GetByID clinic:", err.Error())
+	// 		return
+	// 	}
+
+	// 	fmt.Println(resp)
+	// }
+
+	// GetList
+	{
+		// resp, err := con.GetListClinic(&models.GetListClinicRequest{
+		// 	Offset: 0,
+		// 	Limit:  10,
+		// })
+		// if err != nil {
+		// 	log.Println(config.Error, "GetByID clinic:", err.Error())
+		// 	return
+		// }
+
+		// fmt.Println("Clinic count:", resp.Count)
+		// for ind, clinic := range resp.Clinics {
+		// 	fmt.Println(ind+1, clinic)
+		// }
+	}
+
+	// Update
+	// {
+	// 	resp, err := con.UpdateClinic(
+	// 		&models.UpdateClinic{
+	// 			ClinicID: "bd82bb75-ce28-479d-88a8-491c50f5df5e",
+	// 			Name:     "Nuravshon",
+	// 			Logo:     "logo",
+	// 			City:     "Jizzah",
+	// 		},
+	// 	)
+	// 	if err != nil {
+	// 		log.Println(config.Error, "Update clinic:", err.Error())
+	// 		return
+	// 	}
+
+	// 	fmt.Println(resp)
+	// }
+
+	// Delete
+	{
+		// err := con.DeleteClinic(&models.ClinicPrimaryKey{ID: "bd82bb75-ce28-479d-88a8-491c50f5df5e"})
+		// if err != nil {
+		// 	log.Println(config.Error, "Delete clinic:", err.Error())
+		// 	return
+		// }
+	}
 }

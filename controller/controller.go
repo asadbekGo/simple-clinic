@@ -5,11 +5,11 @@ import (
 	"simple-clinic/storage"
 )
 
-type conn struct {
+type Conn struct {
 	cfg     *config.Config
 	storage storage.StorageI
 }
 
-func NewController(cfg *config.Config, strg storage.StorageI) *conn {
-	return &conn{cfg: cfg, storage: strg}
+func NewController(cfg *config.Config, strg storage.StorageI) *Conn {
+	return &Conn{cfg: cfg, storage: strg}
 }
